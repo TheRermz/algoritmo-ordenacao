@@ -1,5 +1,5 @@
 ---
-Grupo: Carlão, Thanos, Morlo
+Grupo: Camila, Igor, Murilo
 Professor: Jonas
 Matéria: Estrutura de Dados
 Tipo: Desenvolvimento
