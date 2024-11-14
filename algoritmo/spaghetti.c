@@ -1,29 +1,96 @@
-#include <stdio.h>
-#include <stdlib.h>
-/*
-1. Dois arrays, um com os valores bagunçados e outro com os valores finais alinhados de forma crescente;
-2. For() aninhado em uma função de sorting, realizando a organização do array de forma crescente;
-3. Realizar um printf() para demonstrar o resultado final.
-*/
+#include<stdio.h>
+#include<stdlib.h>
 
-/*
-variables -> arr, sortedArr, temp
-*/
 
-void SortingMethod(int unsortedSpaghetti[], int arrSize)
-{
-    int sortedSpaghetti[arrSize];
-
-    for (int position = 0; position < sizeof(unsortedSpaghetti); position++)
-    {
-        // TODO: Parte da comparação de valores;
+//Printa os valores do array
+void printArray(int arr[], int size){
+    for(int i = 0; i < size; i++){
+        printf("%d ", arr[i]);
     }
+    printf("\n");
 }
 
-int main()
-{
-    int unsortedSpaghetti[5] = {3, 23, 2, 105, 200};
-    int arrSize = sizeof(unsortedSpaghetti) / sizeof(unsortedSpaghetti[0]);
+int findMaxIndex(int arr[], int size){
+    int MaxIndex = 0;
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] > arr[MaxIndex])
+        {
+            MaxIndex = i;
+        }
+        
+    }
+
+    return MaxIndex;
+}
+
+void spaghettiSort(int arr[], int size){
+    int sortedIndex = size -1;
+
+    while (sortedIndex >= 0)
+    {
+        int maxIndex = findMaxIndex(arr, sortedIndex +1);
+        int maxValue = arr[maxIndex];
+
+        arr[maxIndex] = arr[sortedIndex];
+        arr[sortedIndex] = maxValue;
+
+        sortedIndex--;
+    }
+    
+}
+
+int main(){
+
+    int arr[] = {
+        14, 57, 89, 23, 45, 67, 102, 301, 450, 578, 
+        68, 39, 274, 56, 900, 32, 512, 607, 800, 123, 
+        214, 74, 56, 890, 127, 689, 782, 35, 15, 98, 
+        345, 267, 872, 102, 543, 781, 154, 320, 555, 25, 
+        600, 770, 234, 988, 543, 689, 420, 356, 42, 63, 
+        903, 29, 150, 61, 762, 204, 371, 865, 999, 703, 
+        480, 555, 390, 29, 274, 912, 758, 81, 211, 308, 
+        420, 621, 370, 497, 671, 88, 476, 211, 925, 618, 
+        991, 193, 820, 456, 761, 700, 37, 920, 374, 19, 
+        306, 258, 901, 18, 599, 312, 411, 74, 176, 309, 
+        244, 331, 100, 600, 455, 125, 489, 294, 547, 788, 
+        321, 893, 148, 209, 723, 645, 928, 812, 101, 348, 
+        719, 607, 271, 498, 622, 52, 757, 466, 370, 222, 
+        358, 274, 539, 486, 97, 634, 154, 212, 864, 390, 
+        517, 220, 71, 315, 259, 503, 149, 99, 207, 525, 
+        676, 619, 141, 903, 64, 54, 255, 876, 457, 539, 
+        304, 591, 175, 887, 35, 962, 478, 410, 594, 356, 
+        791, 63, 555, 745, 628, 209, 854, 493, 741, 853, 
+        936, 212, 387, 230, 813, 628, 91, 31, 205, 338, 
+        623, 919, 46, 311, 401, 747, 231, 123, 928, 716, 
+        188, 539, 150, 779, 661, 900, 85, 752, 53, 451, 
+        202, 531, 813, 603, 755, 803, 957, 310, 170, 225, 
+        495, 638, 89, 212, 174, 694, 919, 518, 703, 16, 
+        490, 324, 821, 388, 903, 621, 705, 460, 777, 501, 
+        110, 400, 250, 639, 983, 276, 332, 758, 46, 563, 
+        784, 342, 123, 920, 160, 642, 750, 481, 909, 12, 
+        109, 539, 23, 930, 632, 43, 595, 478, 602, 773, 
+        510, 920, 159, 251, 394, 215, 271, 508, 74, 826, 
+        907, 873, 533, 441, 62, 177, 148, 73, 214, 775, 
+        457, 359, 614, 548, 746, 689, 388, 948, 619, 396, 
+        831, 532, 311, 970, 526, 65, 880, 487, 332, 729, 
+        852, 931, 877, 320, 428, 234, 482, 15, 88, 155, 
+        463, 728, 297, 520, 265, 137, 118, 406, 430, 451, 
+        255, 676, 939, 222, 835, 859, 470, 900, 310, 693, 
+        745, 816, 918, 521, 115, 321, 257, 82, 615, 717, 
+        122, 639, 114, 67, 41, 26, 697, 503, 624, 205, 
+        772, 415, 230, 492, 843, 601, 185, 80, 728, 521,
+        // Continue preenchendo o array até o valor 1000...
+    };
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Arry original:\n");
+    printArray(arr, size);
+
+    spaghettiSort(arr, size);
+
+    printf("Array ordenado:\n");
+    printArray(arr, size);
 
     return 0;
 }
