@@ -54,7 +54,7 @@ int main()
     int arr[20] = {3, 1, 81, 32, 15, 25, 85, 4, 6, 9, 44, 12, 65, 48, 74, 2, 32, 14, 28, 41};
     int tamanho = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Arry original:\n");
+    printf("Array original:\n");
     printArray(arr, tamanho);
 
     spaghettiSort(arr, tamanho);
